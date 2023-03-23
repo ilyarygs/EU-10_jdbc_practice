@@ -1,6 +1,7 @@
 package jdbctest;
 
 import org.junit.jupiter.api.Test;
+import utilities.DBUtils;
 
 import java.sql.*;
 
@@ -23,6 +24,7 @@ public class LibraryConnectionTest {
         resultSet.next();
 
 
+        System.out.println(resultSet.getString(2));
 
 
         //close connection
@@ -32,5 +34,18 @@ public class LibraryConnectionTest {
 
 
     }
+
+
+    @Test
+    public void test2(){
+        String dbUrl = "jdbc:mysql://34.230.35.214:3306/library1";
+        String dbUsername = "library1_client";
+        String dbPassword = "WVF4NdGXCKHeE6VQ";
+
+        DBUtils.createConnection(dbUrl,dbUsername,dbPassword);
+
+        DBUtils.destroy();
+    }
+
 
 }
